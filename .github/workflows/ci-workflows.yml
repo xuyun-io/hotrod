@@ -2,18 +2,34 @@ name: Greet Everyone
 # This workflow is triggered on pushes to the repository.
 on: [push]
 
-jobs:
-  build:
-    # Job name is Greeting
+jobs: 
+  build: 
     name: Greeting
-    # This job runs on Linux
     runs-on: ubuntu-latest
-    steps:
-      - name: unit test 
-        - uses: actions/unit-test-action@v1
-          with:
-            go-version: 1.12 
-          run: go test ./...
-      - name: docker build and push
-        - uses: actions/docker-build-and-push@v1
-          run: docker build . --file Dockerfile --tag hotrod:$(date +%s)
+    steps: 
+      - name: "unit test"
+        run: "go test ./..."
+        uses: actions/unit-test-action@v1
+        with: 
+          go-version: 1.12
+      - name: "docker build and push"
+        run: "docker build . --file Dockerfile --tag hotrod:$(date +%s)"
+        uses: actions/docker-build-and-push@v1
+
+#jobs:
+#  build:
+#    # Job name is Greeting
+#    name: Greeting
+#    # This job runs on Linux
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: unit test 
+#        - uses: actions/unit-test-action@v1
+#          with:
+#            go-version: 1.12 
+#          run: go test ./...
+#      - name: docker build and push
+#        - uses: actions/docker-build-and-push@v1
+#          run: docker build . --file Dockerfile --tag hotrod:$(date +%s)
+
+
