@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@master
       - name: "unit test"
         uses: actions/setup-go@v1 
-        run: "go test ./..."
+        run: "go test ./..." 
         with: 
           go-version: 1.12
 #      - name: "docker build and push"
