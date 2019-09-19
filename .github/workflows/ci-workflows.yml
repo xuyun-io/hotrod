@@ -7,7 +7,7 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps: 
-      - name: "setup go
+      - name: "setup go"
         uses: actions/checkout@master
       - name: "unit test"
         uses: actions/setup-go@v1 
