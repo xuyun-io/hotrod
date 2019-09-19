@@ -10,6 +10,7 @@ jobs:
       - name: "setup go
         uses: actions/checkout@master
       - name: "unit test"
+        uses: actions/setup-go@v1 
         run: "go test ./..."
         with: 
           go-version: 1.12
