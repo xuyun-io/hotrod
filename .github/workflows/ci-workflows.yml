@@ -15,10 +15,24 @@ jobs:
           go-version: '1.12'
       - name: "go test" 
         run: export GOPATH=${PWD}; cd services; go test ./...
-      - name: "docker build and push"
+      - name: Login to ECR
+        id: ecr
+        uses: elgohr/ecr-login-action@master
+        with:
+          access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: ${{ secrets.AWS_REGION }}
+      - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: hotrod 
+          name: hotrod/hotrod-github
+          username: ${{ steps.ecr.outputs.username }}
+          password: ${{ steps.ecr.outputs.password }}
+          registry: ${{ steps.ecr.outputs.registry }} 
+#      - name: "docker build and push"
+#        uses: elgohr/Publish-Docker-Github-Action@master
+#        with:
+#          name: hotrod 
 #        run: docker build . --file Dockerfile --tag hotrod:$(date +%s)
 #        uses: actions/docker-build-and-push@v1
 #        uses: "actions/docker/cli@c08a5fc9e0286844156fefff2c141072048141f6"
