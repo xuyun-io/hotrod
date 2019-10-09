@@ -7,8 +7,8 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps: 
-#      - name: "checkout go"
-#        uses: actions/checkout@master
+      - name: "checkout go"
+        uses: actions/checkout@master
 #      - name: "setup go"
 #        uses: actions/setup-go@v1
 #        with:
@@ -45,8 +45,8 @@ jobs:
           AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         with:
-          entrypoint: find ./ -name "kubernetes-deploy.yml" 
-          #args: apply -f kubernetes-deploy.yml 
+          #entrypoint: find ./ -name "kubernetes-deploy.yml" 
+          args: apply -f kubernetes-deploy.yml 
           #args: apply -f /home/runner/work/hotrod/hotrod/kubernetes-deploy.yml
 #          args: get nodes
 #          args: version
