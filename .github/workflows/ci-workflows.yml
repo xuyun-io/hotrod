@@ -19,9 +19,6 @@ jobs:
 #        run: docker build . --file Dockerfile --tag hotrod:$(date +%s)
 #        uses: actions/docker-build-and-push@v1
         uses: "actions/docker/cli@c08a5fc9e0286844156fefff2c141072048141f6"
-        run: 
-          - /bin/sh
-          - -c
-          - docker build -t $IMAGE_URI .
+        run: /bin/sh -c docker build -t $IMAGE_URI .
         env: 
-            IMAGE_URI: "hotrod:test"
+          IMAGE_URI: "hotrod:test"
