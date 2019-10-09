@@ -33,5 +33,5 @@ jobs:
           registry: ${{ steps.ecr.outputs.registry }} 
       - name: Deploy to EKS
         uses: "actions/aws/kubectl@master"
-        with:
-          arg: apply -f kubernetes-deploy.yml 
+#        with:
+        args: apply -f kubernetes-deploy.yml 
