@@ -32,7 +32,8 @@ jobs:
 #          password: ${{ steps.ecr.outputs.password }}
 #          registry: ${{ steps.ecr.outputs.registry }} 
       - name: Deploy to EKS
-        uses: actions/aws/kubectl@master
+        #uses: actions/aws/kubectl@master
+        uses: steebchen/kubectl@master
         env:
         #  KUBECONFIG: ${{ secrets.AWS_EKS_KUBE_CONF }}
         #  KUBECONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
