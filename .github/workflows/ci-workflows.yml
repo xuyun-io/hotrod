@@ -7,36 +7,37 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps: 
-      - name: "checkout go"
-        uses: actions/checkout@master
-      - name: "setup go"
-        uses: actions/setup-go@v1
-        with:
-          go-version: '1.12'
-      - name: "go test" 
-        run: export GOPATH=${PWD}; cd services; go test ./...
-      - name: "go build"
-        run: export GOPATH=${PWD}; mkdir -p bin; go build -ldflags="-s -w" -o bin/hotrod main.go 
-      - name: Login to ECR
-        id: ecr
-        uses: elgohr/ecr-login-action@master
-        with:
-          access_key: ${{ secrets.AWS_ACCESS_KEY }}
-          secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          region: ${{ secrets.AWS_REGION }}
-      - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
-        with:
-          name: 847553930390.dkr.ecr.ap-northeast-1.amazonaws.com/hotrod/hotrod-github 
-          username: ${{ steps.ecr.outputs.username }}
-          password: ${{ steps.ecr.outputs.password }}
-          registry: ${{ steps.ecr.outputs.registry }} 
+#      - name: "checkout go"
+#        uses: actions/checkout@master
+#      - name: "setup go"
+#        uses: actions/setup-go@v1
+#        with:
+#          go-version: '1.12'
+#      - name: "go test" 
+#        run: export GOPATH=${PWD}; cd services; go test ./...
+#      - name: "go build"
+#        run: export GOPATH=${PWD}; mkdir -p bin; go build -ldflags="-s -w" -o bin/hotrod main.go 
+#      - name: Login to ECR
+#        id: ecr
+#        uses: elgohr/ecr-login-action@master
+#        with:
+#          access_key: ${{ secrets.AWS_ACCESS_KEY }}
+#          secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          region: ${{ secrets.AWS_REGION }}
+#      - name: Publish to Registry
+#        uses: elgohr/Publish-Docker-Github-Action@master
+#        with:
+#          name: 847553930390.dkr.ecr.ap-northeast-1.amazonaws.com/hotrod/hotrod-github 
+#          username: ${{ steps.ecr.outputs.username }}
+#          password: ${{ steps.ecr.outputs.password }}
+#          registry: ${{ steps.ecr.outputs.registry }} 
       - name: Deploy to EKS
         uses: actions/aws/kubectl@master
         env:
-          KUBECONFIG: ${{ secrets.AWS_EKS_KUBE_CONF }}
-        secrets:
-          ${{ secrets.KUBE_CONFIG_DATA }}
+        #  KUBECONFIG: ${{ secrets.AWS_EKS_KUBE_CONF }}
+           KUBECONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
+        #secrets:
+        #  ${{ secrets.KUBE_CONFIG_DATA }}
         with:
         # args: apply -f kubernetes-deploy.yml 
           args: get nodes
