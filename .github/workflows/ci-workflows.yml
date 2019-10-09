@@ -42,6 +42,8 @@ jobs:
 #          KUBECONFIG: ${{ secrets.AWS_EKS_KUBE_CONF }}
 #          KUBECONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         with:
 #         args: apply -f kubernetes-deploy.yml 
           args: get nodes
