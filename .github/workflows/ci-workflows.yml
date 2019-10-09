@@ -48,11 +48,11 @@ jobs:
 
       - name: "Install kubectl"
         uses: actions/aws/cli@master 
-        runs: sh -c curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl $HOME/kubectl
+        run: sh -c curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl $HOME/kubectl
       - name: "Verify kubectl"
-        needs: "Install kubectl"
+        need: "Install kubectl"
         uses: actions/aws/cli@master
-        runs: sh -c PATH=\"${HOME}:${PATH}\" kubectl version
+        run: sh -c PATH=\"${HOME}:${PATH}\" kubectl version
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
 
