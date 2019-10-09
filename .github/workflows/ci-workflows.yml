@@ -34,4 +34,5 @@ jobs:
       - name: Deploy to EKS
         uses: "actions/aws/kubectl@master"
 #        with:
-        args: apply -f kubernetes-deploy.yml 
+        args: 
+          - apply -f kubernetes-deploy.yml 
