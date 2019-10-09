@@ -35,6 +35,8 @@ jobs:
         uses: actions/aws/kubectl@master
         env:
           KUBECONFIG: ${{ secrets.AWS_EKS_KUBE_CONF }}
+        secrets:
+          ${{ secrets.KUBE_CONFIG_DATA }}
         with:
         # args: apply -f kubernetes-deploy.yml 
           args: get nodes
