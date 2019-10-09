@@ -53,7 +53,8 @@ jobs:
       - name: "Verify kubectl"
       #  need: "Install kubectl"
         uses: actions/aws/cli@master
-        run: sh -c PATH=\"${HOME}:${PATH}\" kubectl version
+        with: 
+          entrypoint: sh -c PATH=\"${HOME}:${PATH}\" kubectl version
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
 
