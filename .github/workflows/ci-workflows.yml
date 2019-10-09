@@ -36,4 +36,5 @@ jobs:
         env:
           KUBECONFIG: ${{ secrets.AWS_EKS_KUBE_CONF }}
         with:
-          args: apply -f kubernetes-deploy.yml 
+        # args: apply -f kubernetes-deploy.yml 
+          args: get nodes
