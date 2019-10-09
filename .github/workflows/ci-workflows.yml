@@ -32,30 +32,31 @@ jobs:
 #          password: ${{ steps.ecr.outputs.password }}
 #          registry: ${{ steps.ecr.outputs.registry }} 
 
-#      - name: Deploy to EKS
-#        #uses: actions/aws/kubectl@master
-#        #uses: steebchen/kubectl@master
+      - name: Deploy to EKS
+#        uses: actions/aws/kubectl@master
+#        uses: steebchen/kubectl@master
 #        uses: actions/aws/cli@master
-#        #run: sh -c curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl $HOME/kubectl
-#        env:
-#        #  KUBECONFIG: ${{ secrets.AWS_EKS_KUBE_CONF }}
-#        #  KUBECONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
-#          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-#        with:
-#        # args: apply -f kubernetes-deploy.yml 
-#          args: get nodes
+        uses: mlycore/aws/kubectl@master
+#        run: sh -c curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl $HOME/kubectl
+        env:
+#          KUBECONFIG: ${{ secrets.AWS_EKS_KUBE_CONF }}
+#          KUBECONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        with:
+#         args: apply -f kubernetes-deploy.yml 
+          args: get nodes
 #          entrypoint: sh -c curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl $HOME/kubectl
 
-      - name: "Install kubectl"
-        uses: actions/aws/cli@master 
-        with:
-          entrypoint: curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl $HOME/kubectl
-      - name: "Verify kubectl"
-      #  need: "Install kubectl"
-        uses: actions/aws/cli@master
-        with: 
-          entrypoint: PATH=\"${HOME}:${PATH}\" kubectl version
-        env:
-          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-
+#      - name: "Install kubectl"
+#        uses: actions/aws/cli@master 
+#        with:
+#          entrypoint: curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl $HOME/kubectl
+#      - name: "Verify kubectl"
+#      #  need: "Install kubectl"
+#        uses: actions/aws/cli@master
+#        with: 
+#          entrypoint: PATH=\"${HOME}:${PATH}\" kubectl version
+#        env:
+#          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+#
 
