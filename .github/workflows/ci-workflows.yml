@@ -27,7 +27,7 @@ jobs:
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: hotrod/hotrod-github
+          name: 847553930390.dkr.ecr.ap-northeast-1.amazonaws.com/hotrod/hotrod-github 
           username: ${{ steps.ecr.outputs.username }}
           password: ${{ steps.ecr.outputs.password }}
           registry: ${{ steps.ecr.outputs.registry }} 
