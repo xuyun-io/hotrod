@@ -15,7 +15,6 @@ jobs:
           go-version: '1.12'
       - name: "go test" 
         run: export GOPATH=${PWD}; cd services; go test ./...
-       
-#      - name: "docker build and push"
-#        run: "docker build . --file Dockerfile --tag hotrod:$(date +%s)"
-#        uses: actions/docker-build-and-push@v1
+      - name: "docker build and push"
+        run: "docker build . --file Dockerfile --tag hotrod:$(date +%s)"
+        uses: actions/docker-build-and-push@v1
