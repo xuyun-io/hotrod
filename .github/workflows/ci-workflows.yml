@@ -33,10 +33,10 @@ jobs:
 #          registry: ${{ steps.ecr.outputs.registry }} 
 
       - name: Deploy to EKS
-        uses: actions/aws/kubectl@master
+#        uses: actions/aws/kubectl@master
 #        uses: steebchen/kubectl@master
 #        uses: actions/aws/cli@master
-#        uses: mlycore/aws/kubectl@master
+        uses: mlycore/aws/kubectl@master
 #        run: sh -c curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl $HOME/kubectl
         env:
 #          KUBECONFIG: ${{ secrets.AWS_EKS_KUBE_CONF }}
