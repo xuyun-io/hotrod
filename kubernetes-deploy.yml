@@ -23,7 +23,8 @@ items:
                 value: jaeger-agent.observability.svc.cluster.local
               - name: JAEGER_AGENT_PORT
                 value: "6831"
-              image: jaegertracing/example-hotrod:latest
+              #image: jaegertracing/example-hotrod:latest
+              image: 847553930390.dkr.ecr.ap-northeast-1.amazonaws.com/hotrod/hotrod-github:latest 
               name: hotrod 
               ports:
                 - containerPort: 8080
