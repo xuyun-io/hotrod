@@ -46,7 +46,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         with:
 #         args: apply -f kubernetes-deploy.yml 
-          args: get nodes
+#          args: get nodes
+          args: version
 #          entrypoint: sh -c curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl $HOME/kubectl
 
 #      - name: "Install kubectl"
