@@ -12,7 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: "checkout go"
-        uses: actions/checkout@develop
+        uses: actions/checkout@master
+        with:
+          ref: develop
       - name: "setup go"
         uses: actions/setup-go@v1
         with:
@@ -24,7 +26,9 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: "checkout go"
-        uses: actions/checkout@develop
+        uses: actions/checkout@master
+        with:
+          ref: develop
       - name: "setup go"
         uses: actions/setup-go@v1
         with:
@@ -50,7 +54,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "checkout go"
-        uses: actions/checkout@develop
+        uses: actions/checkout@master
+        with:
+          ref: develop
       - name: Deploy to EKS
         uses: mlycore/aws/kubectl@master
         env:
