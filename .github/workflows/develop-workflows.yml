@@ -7,7 +7,7 @@ on:
 
 
 jobs: 
-  dev test: 
+  test: 
     name: Unit Test
     runs-on: ubuntu-latest
     steps: 
@@ -19,7 +19,7 @@ jobs:
           go-version: '1.12'
       - name: "go test" 
         run: export GOPATH=${PWD}; cd services; go test ./...
-  dev build: 
+  build: 
     name: Go and Docker build
     runs-on: ubuntu-latest
     steps: 
@@ -45,7 +45,7 @@ jobs:
           username: ${{ steps.ecr.outputs.username }}
           password: ${{ steps.ecr.outputs.password }}
           registry: ${{ steps.ecr.outputs.registry }} 
-  dev deploy: 
+  deploy: 
     name: EKS Deploy
     runs-on: ubuntu-latest
     steps:
