@@ -19,7 +19,7 @@ jobs:
         run: export GOPATH=${PWD}; mkdir -p bin; go build -ldflags="-s -w" -o bin/hotrod main.go 
       - name: Login to ECR
         id: ecr
-        uses: elgohr/ecr-login-action@master
+        uses: mlycore/ecr-login-action@master
         with:
           access_key: ${{ secrets.AWS_ACCESS_KEY }}
           secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
