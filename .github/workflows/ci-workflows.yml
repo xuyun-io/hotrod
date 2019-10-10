@@ -37,7 +37,7 @@ jobs:
       - name: Publish to Registry
         uses: mlycore/Publish-Docker-Github-Action@master
         with:
-          name: 847553930390.dkr.ecr.ap-northeast-1.amazonaws.com/hotrod/hotrod-github:$(date +%Y%m%d%H%M%S)-${GITHUB_SHA}
+          name: 847553930390.dkr.ecr.ap-northeast-1.amazonaws.com/hotrod/hotrod-github:${GITHUB_SHA}
           username: ${{ steps.ecr.outputs.username }}
           password: ${{ steps.ecr.outputs.password }}
           registry: ${{ steps.ecr.outputs.registry }} 
