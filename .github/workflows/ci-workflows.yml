@@ -1,10 +1,10 @@
-name: Hotrod CICD
+name: Greet Everyone
 # This workflow is triggered on pushes to the repository.
 on: [push]
 
 jobs: 
-  test: 
-    name: Unit Test
+  build: 
+    name: Greeting
     runs-on: ubuntu-latest
     steps: 
       - name: "checkout go"
@@ -15,16 +15,6 @@ jobs:
           go-version: '1.12'
       - name: "go test" 
         run: export GOPATH=${PWD}; cd services; go test ./...
-  build: 
-    name: Go and Docker build
-    runs-on: ubuntu-latest
-    steps: 
-      - name: "checkout go"
-        uses: actions/checkout@master
-      - name: "setup go"
-        uses: actions/setup-go@v1
-        with:
-          go-version: '1.12'
       - name: "go build"
         run: export GOPATH=${PWD}; mkdir -p bin; go build -ldflags="-s -w" -o bin/hotrod main.go 
       - name: Login to ECR
@@ -37,21 +27,11 @@ jobs:
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: hotrod/hotrod-github:v1
+          name: 847553930390.dkr.ecr.ap-northeast-1.amazonaws.com/hotrod/hotrod-github 
           username: ${{ steps.ecr.outputs.username }}
           password: ${{ steps.ecr.outputs.password }}
           registry: ${{ steps.ecr.outputs.registry }} 
-  deploy: 
-    name: EKS Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: "checkout go"
-        uses: actions/checkout@master
       - name: Deploy to EKS
-        uses: mlycore/aws/kubectl@master
-        env:
-          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        uses: "actions/aws/kubectl@master"
         with:
-          args: apply -f kubernetes-deploy.yml 
+          arg: apply -f kubernetes-deploy.yml 
