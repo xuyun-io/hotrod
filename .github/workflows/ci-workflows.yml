@@ -25,7 +25,7 @@ jobs:
           secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           region: ${{ secrets.AWS_REGION }}
       - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: mlycore/Publish-Docker-Github-Action@master
         with:
           name: 847553930390.dkr.ecr.ap-northeast-1.amazonaws.com/hotrod/hotrod-github 
           username: ${{ steps.ecr.outputs.username }}
