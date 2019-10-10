@@ -2,7 +2,7 @@ name: Hotrod CICD
 # This workflow is triggered on pushes to the repository.
 on: 
   push:
-    branch:
+    branches:
     - master
 
 jobs: 
