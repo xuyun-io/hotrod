@@ -20,7 +20,7 @@ items:
           containers:
           -   env:
               - name: JAEGER_AGENT_HOST 
-                value: jaeger-agent.observability.svc.cluster.local
+                value: jaeger-agent.yuque.svc.cluster.local
               - name: JAEGER_AGENT_PORT
                 value: "6831"
               #image: jaegertracing/example-hotrod:latest
