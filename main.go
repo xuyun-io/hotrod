@@ -19,6 +19,7 @@ import (
 	"github.com/jaegertracing/jaeger/examples/hotrod/cmd"
 )
 
+// this is main
 func main() {
 	cmd.Execute()
 }
