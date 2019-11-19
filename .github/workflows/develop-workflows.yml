@@ -1,9 +1,6 @@
 name: Hotrod CICD
 # This workflow is triggered on pushes to the repository.
-on: 
-  push:
-    branches:
-    - develop 
+on: push
 
 
 jobs: 
@@ -13,8 +10,8 @@ jobs:
     steps: 
       - name: "checkout go"
         uses: actions/checkout@master
-        with:
-          ref: develop
+#        with:
+#          ref: develop
       - name: "setup go"
         uses: actions/setup-go@v1
         with:
@@ -27,8 +24,8 @@ jobs:
     steps: 
       - name: "checkout go"
         uses: actions/checkout@master
-        with:
-          ref: develop
+#        with:
+#          ref: develop
       - name: "setup go"
         uses: actions/setup-go@v1
         with:
@@ -55,8 +52,8 @@ jobs:
     steps:
       - name: "checkout go"
         uses: actions/checkout@master
-        with:
-          ref: develop
+#        with:
+#          ref: develop
       - name: Deploy to EKS
         uses: mlycore/aws/kubectl@master
         env:
